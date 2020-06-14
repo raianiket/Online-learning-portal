@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title><%=title%></title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </head>
+    <body>
+        <%- include ('nav') %>
+        
+        <div class="container">
+
+<div class="row">
+    <div class="col">
+        <h3>New to LMS? Sign up for free!</h3>
+        <hr />
+        <form action="/register" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" placeholder="Name" name="name" required/>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" placeholder="abcd@gmail.com" name="email" required />
+            </div>
+            <div class="row">
+            <div class="col form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password" required/>
+            </div>
+            
+            <div class="col form-group">
+                <label for="password">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" name="cpassword" required/>
+            </div>
+            </div>
+
+            <button class="btn btn-primary col-md-12 ">Register Now!</button>
+        </form>
+        <script type="text/javascript">
+        var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+        function validatePassword() 
+        {
+            if (password.value != confirm_password.value) {
+                 confirm_password.setCustomValidity("Passwords Don't Match");
+                } 
+                else 
+                {
+                    confirm_password.setCustomValidity('');
+                }
+        }
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+        </script>
+    </div>
+    
+    <div class="col">
+        <h3>Have An Account? Log In Now!</h3>
+        <hr />
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" placeholder="abcd@gmail.com" name="email" required />
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" required/>
+            </div>
+            
+            <button class="btn btn-primary col-md-12">Login</button>
+        </form>
+    </div>
+</div>
+
+<%- include ('footer') %>
